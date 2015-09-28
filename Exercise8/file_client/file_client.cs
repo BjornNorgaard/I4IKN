@@ -7,27 +7,14 @@ namespace file_client
 {
     class FileClient
     {
-        /// <summary>
-        /// The PORT.
-        /// </summary>
         const int Port = 9000;
-        /// <summary>
-        /// The BUFSIZE.
-        /// </summary>
         const int Bufsize = 1000;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FileClient"/> class.
-        /// </summary>
-        /// <param name='args'>
-        /// The command-line arguments. First ip-adress of the server. Second the filename
-        /// </param>
         private FileClient(string[] args)
         {
             TcpClient clientSocket = new TcpClient();
 
-            clientSocket.Connect(args[0], Port);    // IP later repalced with args[0]
-            //clientSocket.Connect("10.0.0.1", Port);
+            clientSocket.Connect(args[0], Port);
             Console.WriteLine("Connected to server. Input filename: ");
             string fileToReceive = args[1]; // better than a readLine()
 
@@ -49,15 +36,6 @@ namespace file_client
             }
         }
 
-        /// <summary>
-        /// Receives the file.
-        /// </summary>
-        /// <param name='fileName'>
-        /// File name.
-        /// </param>
-        /// <param name='io'>
-        /// Network stream for reading from the server
-        /// </param>
         private void ReceiveFile(String fileName, NetworkStream io)
         {
             long fileSize = long.Parse(Lib.ReadTextTcp(io));
@@ -79,12 +57,6 @@ namespace file_client
             io.Close();
         }
 
-        /// <summary>
-        /// The entry point of the program, where the program control starts and ends.
-        /// </summary>
-        /// <param name='args'>
-        /// The command-line arguments.
-        /// </param>
         public static void Main(string[] args)
         {
             Console.WriteLine("Client starts...");

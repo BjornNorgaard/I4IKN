@@ -3,30 +3,14 @@ using System;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
-using System.Text;
 
 namespace file_server
 {
     class FileServer
     {
-        /// <summary>
-        /// The PORT
-        /// </summary>
         const int Port = 9000;
-        /// <summary>
-        /// The BUFSIZE
-        /// </summary>
         const int Bufsize = 1000;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="FileServer"/> class.
-        /// Opretter en socket.
-        /// Venter på en connect fra en klient.
-        /// Modtager filnavn
-        /// Finder filstørrelsen
-        /// Kalder metoden sendFile
-        /// Lukker socketen og programmet
-        /// </summary>
         private FileServer()
         {
             // Initializes a new instance of the <see cref="FileServer"/> class.
@@ -76,18 +60,6 @@ namespace file_server
             }
         }
 
-        /// <summary>
-        /// Sends the file.
-        /// </summary>
-        /// <param name='fileName'>
-        /// The filename.
-        /// </param>
-        /// <param name='fileSize'>
-        /// The filesize.
-        /// </param>
-        /// <param name='io'>
-        /// Network stream for writing to the client.
-        /// </param>
         private static void SendFile(String fileName, long fileSize, NetworkStream io)
         {
             Lib.WriteTextTcp(io, fileSize.ToString());
@@ -114,8 +86,8 @@ namespace file_server
                 Fs.Read(sendingBuffer, 0, CurrentPacketLenght);
                 io.Write(sendingBuffer, 0, sendingBuffer.Length);
 
-				System.Threading.Thread.Sleep (200);
-				Console.Write("\rSent " + (i+1) + " of " + noOfPackets + " packets to the client.");
+                System.Threading.Thread.Sleep(200);
+                Console.Write("\rSent " + (i + 1) + " of " + noOfPackets + " packets to the client.");
             }
 
             Console.WriteLine("Sent " + Fs.Length + " bytes to the client.");
@@ -123,12 +95,6 @@ namespace file_server
             io.Close();
         }
 
-        /// <summary>
-        /// The entry point of the program, where the program control starts and ends.
-        /// </summary>
-        /// <param name='args'>
-        /// The command-line arguments.
-        /// </param>
         public static void Main(string[] args)
         {
             while (true)
