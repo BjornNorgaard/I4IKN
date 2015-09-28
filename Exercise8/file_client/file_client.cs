@@ -1,5 +1,6 @@
 using System;
 using System.Net.Sockets;
+using System.Text;
 
 namespace tcp
 {
@@ -22,12 +23,9 @@ namespace tcp
         /// </param>
         private FileClient(string[] args)
         {
-            // TO DO Your own code
-            TcpListener serverSocket = new TcpListener(Port);
-
-            int requestCount = 0;
-
             TcpClient clientSocket = new TcpClient();
+
+
         }
 
         /// <summary>

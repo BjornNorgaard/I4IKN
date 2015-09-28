@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
 
 namespace tcp
 {
@@ -29,6 +30,34 @@ namespace tcp
 		private FileServer ()
 		{
 			// TO DO Your own code
+            TcpListener serverSocket = new TcpListener(Port);
+            TcpClient clientSocket = new TcpClient();
+            int requestCount = 0;
+
+            serverSocket.Start();
+            Console.WriteLine(" >> Server Started.");
+
+            clientSocket = serverSocket.AcceptTcpClient();  // client found
+            Console.WriteLine(" >> Accept connection from client");
+
+            requestCount = 0;
+
+            while (true)
+            {
+                try
+                {
+                    requestCount++;
+
+                    NetworkStream networkStream = clientSocket.GetStream(); // finder stream fra client
+                    string received = Lib.ReadTextTcp(networkStream);   // henter stream til string
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
 		}
 
 		/// <summary>
