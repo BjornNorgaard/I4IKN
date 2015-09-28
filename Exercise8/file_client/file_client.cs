@@ -26,7 +26,8 @@ namespace file_client
         {
             TcpClient clientSocket = new TcpClient();
 
-            clientSocket.Connect(args[0], Port);    // IP later repalced with args[0]
+            //clientSocket.Connect(args[0], Port);    // IP later repalced with args[0]
+            clientSocket.Connect("10.0.0.1", Port);
             Console.WriteLine("Connected to server. Input filename: ");
             string fileToReceive = args[1]; // better than a readLine()
 
