@@ -1,4 +1,5 @@
 using System;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
@@ -24,8 +25,6 @@ namespace tcp
         private FileClient(string[] args)
         {
             TcpClient clientSocket = new TcpClient();
-
-
         }
 
         /// <summary>

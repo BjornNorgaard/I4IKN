@@ -2,6 +2,7 @@ using System;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace tcp
@@ -29,35 +30,52 @@ namespace tcp
 		/// </summary>
 		private FileServer ()
 		{
-			// TO DO Your own code
-            TcpListener serverSocket = new TcpListener(Port);
-            TcpClient clientSocket = new TcpClient();
-            int requestCount = 0;
+			// Initializes a new instance of the <see cref="FileServer"/> class.
+			// Sker i main...
 
-            serverSocket.Start();
-            Console.WriteLine(" >> Server Started.");
+			// Opretter en socket
+			TcpListener serverSocket = new TcpListener(IPAddress.Parse("10.0.0.1"), Port);
+			TcpClient clientSocket = default(TcpClient);
 
-            clientSocket = serverSocket.AcceptTcpClient();  // client found
-            Console.WriteLine(" >> Accept connection from client");
+			// Venter på en connect fra en klient
+			serverSocket.Start();
+			Console.WriteLine("Server running   - Waiting for client.");
 
-            requestCount = 0;
+			// Connecter en klient
+			clientSocket = serverSocket.AcceptTcpClient();
+			Console.WriteLine("Client connected - Waiting for filename.");
+			
+			// Modtager filnavn
+			NetworkStream networkStream = clientSocket.GetStream();
+			string fileToSend = Lib.ReadTextTcp(networkStream);
+			Console.WriteLine("Client trying to retrieve file: " + fileToSend);
 
-            while (true)
-            {
-                try
-                {
-                    requestCount++;
+			// Finder filstørrelsen
+			long fileLenght = Lib.check_File_Exists(fileToSend);
 
-                    NetworkStream networkStream = clientSocket.GetStream(); // finder stream fra client
-                    string received = Lib.ReadTextTcp(networkStream);   // henter stream til string
+			// Kalder metoden sendFile
+			if (fileLenght > 0)
+			{
+				Console.WriteLine("Size of file: " + fileLenght);
 
-                }
-                catch (Exception)
-                {
+				Lib.WriteTextTcp(networkStream, "1");
+				SendFile(fileToSend, fileLenght, networkStream);
 
-                    throw;
-                }
-            }
+				// Lukker socketen og programmet
+				Console.WriteLine("Closing connection.");
+				clientSocket.Close();
+				serverSocket.Stop();
+				Console.WriteLine("Connection closed.");
+			}
+			else
+			{
+				Lib.WriteTextTcp(networkStream, "0");
+				Console.WriteLine("You done goofed!");
+
+				// Lukker socketen og programmet
+				clientSocket.Close();
+				serverSocket.Stop();
+			}
 		}
 
 		/// <summary>
@@ -74,7 +92,7 @@ namespace tcp
 		/// </param>
 		private void SendFile (String fileName, long fileSize, NetworkStream io)
 		{
-			// TO DO Your own code
+			Lib.WriteTextTcp(io, fileSize.ToString());
 		}
 
 		/// <summary>
