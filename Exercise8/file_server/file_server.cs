@@ -1,8 +1,8 @@
+using LIB;
 using System;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
-using LIB;
 
 namespace file_server
 {
@@ -12,7 +12,6 @@ namespace file_server
         /// The PORT
         /// </summary>
         const int Port = 9000;
-
         /// <summary>
         /// The BUFSIZE
         /// </summary>
@@ -95,7 +94,7 @@ namespace file_server
             FileStream Fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
 
             int noOfPackets = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(Fs.Length) / Convert.ToDouble(Bufsize)));
-            int totalLenght = (int) Fs.Length;
+            int totalLenght = (int)Fs.Length;
             int CurrentPacketLenght;
 
             for (int i = 0; i < noOfPackets; i++)
@@ -114,7 +113,7 @@ namespace file_server
                 Fs.Read(sendingBuffer, 0, CurrentPacketLenght);
                 io.Write(sendingBuffer, 0, sendingBuffer.Length);
 
-                Console.WriteLine("\r Sent " + (i+1) + " of " + noOfPackets + " packets to the client.");
+                Console.WriteLine("\r Sent " + (i + 1) + " of " + noOfPackets + " packets to the client.");
             }
 
             Console.WriteLine("Sent " + Fs.Length + " bytes to the client.");
@@ -130,7 +129,7 @@ namespace file_server
         /// </param>
         public static void Main(string[] args)
         {
-            while(true)
+            while (true)
             {
                 Console.WriteLine("Server starts...");
                 new FileServer();   // syntax because we're in the class FileServer.
