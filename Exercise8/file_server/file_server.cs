@@ -3,6 +3,7 @@ using System;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
+using System.Text;
 
 namespace file_server
 {
@@ -113,7 +114,8 @@ namespace file_server
                 Fs.Read(sendingBuffer, 0, CurrentPacketLenght);
                 io.Write(sendingBuffer, 0, sendingBuffer.Length);
 
-                Console.WriteLine("\r Sent " + (i + 1) + " of " + noOfPackets + " packets to the client.");
+				System.Threading.Thread.Sleep (200);
+				Console.Write("\rSent " + (i+1) + " of " + noOfPackets + " packets to the client.");
             }
 
             Console.WriteLine("Sent " + Fs.Length + " bytes to the client.");
