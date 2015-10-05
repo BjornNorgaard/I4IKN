@@ -45,12 +45,14 @@ namespace FileServer
             if (fileSize > 0)
             {
                 Lib.WriteTextTcp(networkStream, "Sending file");        // 2: sending OK to client, sending file
-                SendFile(requestedFile, fileSize, networkStream);
+				Console.WriteLine("Sending file");
+				SendFile(requestedFile, fileSize, networkStream);
             }
             else
             {
                 Lib.WriteTextTcp(networkStream, "Error sending file");  // 2: sending FUCK to client, cannot send file
-            }
+				Console.WriteLine("Error sending file");
+			}
 
             #endregion
 
@@ -76,7 +78,8 @@ namespace FileServer
             #region Assigning variables
 
             fileStream = new FileStream(path: filename, mode: FileMode.Open, access: FileAccess.Read);
-            numberOfPackets = (int)filesize / 1000;
+			//numberOfPackets = (int)filesize / 1000;
+			numberOfPackets = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(fileStream.Length)/Convert.ToDouble(BufferSize)));
             totalLenght = (int)fileStream.Length;
 
             #endregion
@@ -105,7 +108,7 @@ namespace FileServer
 
                 byte[] sendingBuffer = new byte[currentPacketsLenght];      // nedded for filestream operation
                 fileStream.Read(sendingBuffer, 0, currentPacketsLenght);    // placing currentpacket stuff in the sending buffer
-                fileStream.Write(sendingBuffer, 0, currentPacketsLenght);   // writes the sending buffer to filestream
+				stream.Write(sendingBuffer, 0, currentPacketsLenght);   // writes the sending buffer to filestream
 
                 Console.Write("\rSent " + (i + 1) + " of " + numberOfPackets + " packets to client");
                 if (i == (numberOfPackets - 1)) Console.WriteLine("");
@@ -123,8 +126,12 @@ namespace FileServer
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Starting server...");
-            FileServer myServer = new FileServer();
+			while (true) 
+			{
+				Console.WriteLine("Starting server...");
+				new FileServer();
+				Console.WriteLine ("Restarting server...\n");
+			}
         }
     }
 }
