@@ -70,7 +70,7 @@ namespace file_server
             int totalLenght = (int)Fs.Length;
             int CurrentPacketLenght;
 
-            for (int i = 0; i < noOfPackets; i++)
+            for (int i = 1; i < noOfPackets + 1; i++)
             {
                 if (totalLenght > Bufsize)
                 {
@@ -86,8 +86,8 @@ namespace file_server
                 Fs.Read(sendingBuffer, 0, CurrentPacketLenght);
                 io.Write(sendingBuffer, 0, sendingBuffer.Length);
 
-                System.Threading.Thread.Sleep(200);
-                Console.Write("\rSent " + (i + 1) + " of " + noOfPackets + " packets to the client.");
+                //  System.Threading.Thread.Sleep(200);
+                Console.Write("\rSent " + i + " of " + noOfPackets + " packets to the client.");
             }
 
             Console.WriteLine("Sent " + Fs.Length + " bytes to the client.");
