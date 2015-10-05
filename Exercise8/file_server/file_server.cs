@@ -64,34 +64,35 @@ namespace file_server
         {
             Lib.WriteTextTcp(io, fileSize.ToString());
 
-            FileStream Fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+            FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read);
 
-            int noOfPackets = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(Fs.Length) / Convert.ToDouble(Bufsize)));
-            int totalLenght = (int)Fs.Length;
-            int CurrentPacketLenght;
+            int noOfPackets = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(fs.Length) / Convert.ToDouble(Bufsize)));
+            int totalLenght = (int)fs.Length;
 
             for (int i = 1; i < noOfPackets + 1; i++)
             {
+                int currentPacketLenght;
                 if (totalLenght > Bufsize)
                 {
-                    CurrentPacketLenght = Bufsize;
-                    totalLenght -= CurrentPacketLenght;
+                    currentPacketLenght = Bufsize;
+                    totalLenght -= currentPacketLenght;
                 }
                 else
                 {
-                    CurrentPacketLenght = totalLenght;
+                    currentPacketLenght = totalLenght;
                 }
 
-                var sendingBuffer = new byte[CurrentPacketLenght];
-                Fs.Read(sendingBuffer, 0, CurrentPacketLenght);
+                var sendingBuffer = new byte[currentPacketLenght];
+                fs.Read(sendingBuffer, 0, currentPacketLenght);
                 io.Write(sendingBuffer, 0, sendingBuffer.Length);
 
-                //  System.Threading.Thread.Sleep(200);
-                Console.Write("\rSent " + i + " of " + noOfPackets + " packets to the client.");
+                System.Threading.Thread.Sleep(200);
+                //Console.Write("\rSent " + i + " of " + noOfPackets + " packets to the client.");
+                Console.Write("\r Sent " + (i + 1) + " of " + noOfPackets + " packets to the client");
             }
 
-            Console.WriteLine("Sent " + Fs.Length + " bytes to the client.");
-            Fs.Close();
+            Console.WriteLine("Sent " + fs.Length + " bytes to the client.");
+            fs.Close();
             io.Close();
         }
 
