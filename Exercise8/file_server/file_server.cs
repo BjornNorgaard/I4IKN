@@ -24,7 +24,7 @@ namespace file_server
             Console.WriteLine("Server running   - Waiting for client.");
 
             // Connecter en klient
-            var clientSocket = serverSocket.AcceptTcpClient();
+            TcpClient clientSocket = serverSocket.AcceptTcpClient();
             Console.WriteLine("Client connected - Waiting for filename.");
 
             // Modtager filnavn
@@ -69,7 +69,7 @@ namespace file_server
             int noOfPackets = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(fs.Length) / Convert.ToDouble(Bufsize)));
             int totalLenght = (int)fs.Length;
 
-            for (int i = 1; i < noOfPackets + 1; i++)
+            for (int i = 0; i < noOfPackets; i++)
             {
                 int currentPacketLenght;
                 if (totalLenght > Bufsize)
@@ -82,13 +82,12 @@ namespace file_server
                     currentPacketLenght = totalLenght;
                 }
 
-                var sendingBuffer = new byte[currentPacketLenght];
+                byte[] sendingBuffer = new byte[currentPacketLenght];
                 fs.Read(sendingBuffer, 0, currentPacketLenght);
                 io.Write(sendingBuffer, 0, sendingBuffer.Length);
 
                 System.Threading.Thread.Sleep(200);
-                //Console.Write("\rSent " + i + " of " + noOfPackets + " packets to the client.");
-                Console.Write("\r Sent " + (i + 1) + " of " + noOfPackets + " packets to the client");
+                Console.Write("\rSent " + (i + 1) + " of " + noOfPackets + " packets to the client.");
             }
 
             Console.WriteLine("Sent " + fs.Length + " bytes to the client.");
@@ -101,7 +100,7 @@ namespace file_server
             while (true)
             {
                 Console.WriteLine("Server starts...");
-                new FileServer();   // syntax because we're in the class FileServer.
+                new FileServer(); // syntax because we're in the class FileServer.
             }
         }
     }
