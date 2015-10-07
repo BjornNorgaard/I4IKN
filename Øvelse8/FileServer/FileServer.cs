@@ -50,7 +50,7 @@ namespace FileServer
 			}
 			else
 			{
-				Lib.WriteTextTcp(networkStream, "Error sending file");  // 2: sending FUCK to client, cannot send file
+				Lib.WriteTextTcp(networkStream, "Error sending file");  // 2: sending FUCK to client: cannot send file
 				Console.WriteLine("Error sending file");
 			}
 
@@ -78,7 +78,7 @@ namespace FileServer
 			#region Assigning variables
 
 			fileStream = new FileStream(path: filename, mode: FileMode.Open, access: FileAccess.Read);
-			numberOfPackets = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(fileStream.Length)/Convert.ToDouble(BufferSize)));
+			numberOfPackets = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(fileStream.Length)/Convert.ToDouble(BufferSize)));  // where did this come from?
 			totalLenght = (int)fileStream.Length;
 
 			#endregion
@@ -128,7 +128,7 @@ namespace FileServer
 			while (true) 
 			{
 				Console.WriteLine("Starting server...");
-				new FileServer();
+				FileServer fileServer = new FileServer();
 				Console.WriteLine ("Restarting server...\n");
 			}
 		}

@@ -8,7 +8,7 @@ namespace FileClient
     class FileClient
     {
         const int Port = 9000;
-        const int bufferSize = 1000;
+        const int BufferSize = 1000;
 
         public FileClient(string[] args)
         {
@@ -37,18 +37,18 @@ namespace FileClient
             Lib.WriteTextTcp(networkStream, fileToRequest);     // 1: client sends filename
             serverResponse = Lib.ReadTextTcp(networkStream);    // 2: waiting for server to check for file
 
-            if (serverResponse == "Sending file")
+            switch (serverResponse)
             {
-                ReceiceFile(fileToRequest, networkStream);
-                Console.WriteLine("File received.");
-            }
-            else if (serverResponse == "Error sending file")
-            {
-                Console.WriteLine(serverResponse);
-            }
-            else
-            {
-                Console.WriteLine("I don't know how you fucked this up...");
+                case "Sending file":
+                    ReceiceFile(fileToRequest, networkStream);
+                    Console.WriteLine("File received.");
+                    break;
+                case "Error sending file":
+                    Console.WriteLine(serverResponse);
+                    break;
+                default:
+                    Console.WriteLine("I don't know how you fucked this up...");
+                    break;
             }
 
             #endregion
@@ -66,7 +66,7 @@ namespace FileClient
             #region Declaring variables
 
             string filesize;
-            byte[] receivingBuffer = new byte[bufferSize];
+            byte[] receivingBuffer = new byte[BufferSize];
             int numberOfBytesToBeReceived = 0;
             int totalNumberOfReceivedBytes = 0;
             FileStream fileStream;
