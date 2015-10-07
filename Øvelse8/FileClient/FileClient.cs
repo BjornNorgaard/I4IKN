@@ -87,9 +87,7 @@ namespace FileClient
             {
                 fileStream.Write(receivingBuffer, 0, numberOfBytesToBeReceived);
                 totalNumberOfReceivedBytes += numberOfBytesToBeReceived;
-                int i = 0;
-                Console.Write("\rReceived " + ++i + " of " + numberOfBytesToBeReceived + " packets to client");
-            }
+			}
 
             #endregion
 
