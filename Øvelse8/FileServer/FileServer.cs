@@ -55,7 +55,7 @@ namespace FileServer
 			}
 
 			#endregion
-
+            
 			#region Closing connection
 
 			serverSocket.Stop();

@@ -60,7 +60,7 @@ namespace FileClient
 
 			#endregion
 		}
-
+        
 		public void ReceiveFile(string filename, NetworkStream stream)
 		{
 			#region Declaring variables

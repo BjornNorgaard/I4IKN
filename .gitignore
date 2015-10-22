@@ -11,9 +11,9 @@
 *.userprefs
 
 # Build results
-
+[Dd]ebug/
 [Dd]ebugPublic/
-
+[Rr]elease/
 [Rr]eleases/
 x64/
 x86/
@@ -194,3 +194,12 @@ FakesAssemblies/
 
 # Visual Studio 6 workspace options file
 *.opt
+
+# Random shit I don't know about
+*.pdb
+*.dll
+*.v12.suo
+*.csprojResolveAssemblyReference.cache
+
+*.synctex
+*.synctex.gz
