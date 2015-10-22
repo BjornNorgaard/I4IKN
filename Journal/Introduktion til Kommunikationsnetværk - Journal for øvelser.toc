@@ -1,0 +1,4 @@
+\select@language {english}
+\contentsline {section}{\numberline {1}\IeC {\O }velse 8 - TCP/IP socket programming}{1}
+\contentsline {subsection}{\numberline {1.1}\IeC {\O }velsesbeskrivelse}{1}
+\contentsline {section}{\numberline {2}Solid 1 - SRP, ISP og DIP}{2}

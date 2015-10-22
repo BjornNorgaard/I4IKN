@@ -1,0 +1,36 @@
+\input{utils/preamble}
+
+% Header og footer
+\lhead{I4IKN}	\chead{\myTitle}	\rhead{\today}
+\lfoot{}		\cfoot{}			\rfoot{\thepage}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\newcommand{\myTitle}{\textbf{Journal for øvelserne 8 \& 9}}
+
+\title{\myTitle}
+%\date{}
+\author{
+	Bjørn Nørgaard Sørensen\\
+	stu.nr: 201370248\\
+	bjornnorgaard@post.au.dk
+	\and
+	Joachim Dam Andersen\\
+	stu.nr: 201370031\\
+	mr.anderson@post.au.dk
+}
+
+\begin{document}
+	\maketitle
+	\newpage
+	\pagenumbering{roman}
+	\input{utils/indholdsfortegnelser}
+	\pagenumbering{arabic}
+	
+	% include sections here
+	\newpage
+	\input{docs/ovelse8}
+	\newpage
+	\input{docs/ovelse9}
+	% include sections before here
+\end{document}

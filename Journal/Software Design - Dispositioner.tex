@@ -1,0 +1,37 @@
+\input{utils/preamble}
+
+% Header og footer
+\lhead{I4SWD}	\chead{\myTitle}	\rhead{\today}
+\lfoot{}		\cfoot{}			\rfoot{\thepage}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\begin{document}
+	\pagenumbering{roman}
+	\input{utils/titlepage}
+	\input{utils/indholdsfortegnelser}
+	\pagenumbering{arabic}
+	
+	% include sections here
+	\newpage
+	\input{docs/spm1_solid_1}
+	\newpage
+	\input{docs/spm2_solid_2}
+	\newpage
+	\input{docs/spm3_patterns_1}
+	\newpage
+	\input{docs/spm4_patterns_2}
+	\newpage
+	\input{docs/spm5_patterns_3}
+	\newpage
+	\input{docs/spm6_patterns_4}
+	\newpage
+	\input{docs/spm7_patterns_5}
+	\newpage
+	\input{docs/spm8_patterns_6}
+	\newpage
+	\input{docs/spm9_domain}
+	\newpage
+	\input{docs/spm10_arkitektur}
+	% include sections before here
+\end{document}
