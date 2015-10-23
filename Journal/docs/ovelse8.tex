@@ -5,8 +5,6 @@ I denne øvelse i socket programmering, laves en TCP client og TCP server. Vi ha
 \subsection{Udviklingsforløb}
 Vi har designet koden således at server og client er opdelt i to hoveddele, hhv. constructor og overføringsfunktionalitet. For serveren betyder dette afsendingsfunktionalitet, og for clienten modtagelsesfunktionalitet.
 
-Fizz\ref{herp}
-
 \begin{lstlisting}[caption = Hoveddesign for server,label=herp]
 public FileServer()
 {
@@ -25,7 +23,7 @@ public void SendFile(string filename, long filesize, NetworkStream stream)
 \end{lstlisting}
 
 \subsection{Funktionalitet}
-
+Vores design gør det muligt for brugeren at selv indtaste en ønsket TCP servers IP-addresse. Dette giver mulighed for yderligere udvidelse af programmets funktionalitet. Der oprettes nu forbindelse til serveren med den indtastede addresse. Herefter venter clienten på at brugeren indtaster et navn på den fil der ønskes downloadet fra serveren. Clienten  anmoder da serveren om den specifikke fil, hvorefter serveren melder tilbage. Hvis filen eksisterer påbegyndes overførslen.
 \subsection{Resultater}
 
 \subsection{Konklusion}
