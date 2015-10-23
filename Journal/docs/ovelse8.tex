@@ -8,7 +8,7 @@ Vi har designet koden således at server og client er opdelt i to hoveddele, hhv
 \begin{lstlisting}[caption = Hoveddesign for server,label=code:tcpServer]
 public FileServer()
 {
-	//Setting up server and connecting client
+	//Setting up server and connecting client\textsl{}
 	//Getting filename an calculating lenght
 	//Sending file 
 	//Closing connection
@@ -26,15 +26,18 @@ public void SendFile(string filename, long filesize, NetworkStream stream)
 Vores design gør det muligt for brugeren at selv indtaste en ønsket TCP servers IP-addresse. Dette giver mulighed for yderligere udvidelse af programmets funktionalitet. Der oprettes nu forbindelse til serveren med den indtastede addresse. Herefter venter clienten på at brugeren indtaster et navn på den fil der ønskes downloadet fra serveren. Clienten  anmoder da serveren om den specifikke fil, hvorefter serveren melder tilbage. Hvis filen eksisterer påbegyndes overførslen.
 
 \subsection{Resultater}
+Vi har testet vores system og vedlagt screenshots heraf. På figur \ref{fig:tcp_h1} ses test af serveren, hvor der sendes to filer. På billedet ses filer til afsendelse, som ligger i fileserverens Debug folder (markeret med lyserød). Billedet illusterer desuden programflowet med konsoludskrifter.
 
-\begin{figure}[h]
+På figur \ref{fig:tcp_h2} ses test af clienten fra samme testsekvens som på figur \ref{fig:tcp_h1}. Her modtages to filer, hhv. Herp.jpg og Derp.jpg. Igen illustreres programflowet med konsoludskrifter. 
+
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\linewidth]{figs/tcp_h1}
 	\caption{Test af TCP server/client - billede fra server.}
 	\label{fig:tcp_h1}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.9\linewidth]{figs/tcp_h2}
 	\caption{Test af TCP server/client - billede fra client.}
