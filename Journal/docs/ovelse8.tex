@@ -3,12 +3,12 @@
 \subsection{Introduktion}
 I denne øvelse i socket programmering, laves en TCP client og TCP server. Vi har valgt at programmere i det objektorienterede sprog C\#. Clienten skal kunne forbinde til serveren, og downloade en fil herfra. Clienten og serveren køres på hver sin virtuelle linux maskine. I dette dokument beskrives udviklingsforløbet med tilhørende digrammer og kodeforklaringer.
 \subsection{Udviklingsforløb}
-Vi har designet koden således at server og client er opdelt i to hoveddele, hhv. constructor og overføringsfunktionalitet. For serveren betyder dette afsendingsfunktionalitet, og for clienten modtagelsesfunktionalitet. På kodeudsnit: \ref{code:tcpServer} \nameref{code:tcpServer},
+Vi har designet koden således at server og client er opdelt i to hoveddele, hhv. constructor og overføringsfunktionalitet. For serveren betyder dette afsendingsfunktionalitet, og for clienten modtagelsesfunktionalitet. På kodeudsnit: \ref{code:tcpServer} \nameref{code:tcpServer} og \ref{code:tcpClient} \nameref{code:tcpClient}, kan psudokoden for metoderne ses. Ønsker nærmere gennemgang af kode, kan source koden findes i medfølgende src.zip fil.
 
 \begin{lstlisting}[caption = Hoveddesign for server,label=code:tcpServer]
 public FileServer()
 {
-	//Setting up server and connecting client\textsl{}
+	//Setting up server and connecting client
 	//Getting filename an calculating lenght
 	//Sending file 
 	//Closing connection
@@ -18,6 +18,23 @@ public void SendFile(string filename, long filesize, NetworkStream stream)
 	//Local variables
 	//Assigning variables
 	//Sending file
+	//Closing connection
+}
+\end{lstlisting}
+
+\begin{lstlisting}[caption = Hoveddesign for client,label=code:tcpClient]
+public FileClient()
+{
+	//Declaring variables
+	//Assigning variables
+	//Requesting and receiving file
+	//Closing connection
+}
+public void ReceiveFile(string filename, NetworkStream stream)
+{
+	//Declaring variables
+	//Assigning variables and setting up fileStream
+	//Receiving data
 	//Closing connection
 }
 \end{lstlisting}
