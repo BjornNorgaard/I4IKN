@@ -1,11 +1,32 @@
 \section{Øvelse 8 - TCP/IP socket programming}
 
 \subsection{Introduktion}
-I denne øvelse i socket programmering, laves en TCP client og TCP server. Vi har valgt at programmere i det objektorienterede sprog Csharp. Clienten skal kunne forbinde til serveren, og downloade en fil herfra. Clienten og serveren køres på hver sin virtuelle linux maskine. I dette dokument beskrives udviklingsforløbet med tilhørende digrammer og kodeforklaringer. 
+I denne øvelse i socket programmering, laves en TCP client og TCP server. Vi har valgt at programmere i det objektorienterede sprog C\#. Clienten skal kunne forbinde til serveren, og downloade en fil herfra. Clienten og serveren køres på hver sin virtuelle linux maskine. I dette dokument beskrives udviklingsforløbet med tilhørende digrammer og kodeforklaringer.
 \subsection{Udviklingsforløb}
+Vi har designet koden således at server og client er opdelt i to hoveddele, hhv. constructor og overføringsfunktionalitet. For serveren betyder dette afsendingsfunktionalitet, og for clienten modtagelsesfunktionalitet.
+
+Fizz\ref{herp}
+
+\begin{lstlisting}[caption = derp,label=herp]
+public FileServer()
+{
+	//Setting up server and connecting client
+	//Getting filename an calculating lenght
+	//Sending file 
+	//Closing connection
+}
+public void SendFile(string filename, long filesize, NetworkStream stream)
+{
+	//Local variables
+	//Assigning variables
+	//Sending file
+	//Closing connection
+}
+\end{lstlisting}
 
 \subsection{Funktionalitet}
 
 \subsection{Resultater}
 
 \subsection{Konklusion}
+I arbejdet med TCP socket programmering er vi kommet frem til en læsning der opfylder kravene givet i opgaven. Det kan derfor konstateres at teorien stemmer overens med praksis.
