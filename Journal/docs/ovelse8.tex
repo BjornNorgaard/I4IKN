@@ -23,7 +23,7 @@ public void SendFile(string filename, long filesize, NetworkStream stream)
 \end{lstlisting}
 
 \subsection{Funktionalitet}
-Vores design gør det muligt for brugeren at selv indtaste en ønsket TCP servers IP-addresse. Dette giver mulighed for yderligere udvidelse af programmets funktionalitet. Der oprettes nu forbindelse til serveren med den indtastede addresse. Herefter venter clienten på at brugeren indtaster et navn på den fil der ønskes downloadet fra serveren. Clienten  anmoder da serveren om den specifikke fil, hvorefter serveren melder tilbage. Hvis filen eksisterer påbegyndes overførslen.
+Vores design gør det muligt for brugeren at selv indtaste en ønsket TCP servers IP-addresse. Dette giver mulighed for yderligere udvidelse af programmets funktionalitet. Der oprettes nu forbindelse til serveren med den indtastede addresse. Herefter venter clienten på at brugeren indtaster et navn på den fil der ønskes downloadet fra serveren. Clienten  anmoder da serveren om den specifikke fil, hvorefter serveren melder tilbage. Hvis filen eksisterer påbegyndes overførslen. Der er udarbejdet en sekvensdiagram der illustrer det overordnede system. Se dette på figur \ref{fig:sequence1} på side \pageref{fig:sequence1}.
 
 \subsection{Resultater}
 Vi har testet vores system og vedlagt screenshots heraf. På figur \ref{fig:tcp_h1} ses test af serveren, hvor der sendes to filer. På billedet ses filer til afsendelse, som ligger i fileserverens Debug folder (markeret med lyserød). Billedet illusterer desuden programflowet med konsoludskrifter.
