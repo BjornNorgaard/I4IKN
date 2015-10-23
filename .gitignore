@@ -203,3 +203,6 @@ FakesAssemblies/
 
 *.synctex
 *.synctex.gz
+*.aux
+*.toc
+*.pdf
