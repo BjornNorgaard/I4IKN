@@ -40,13 +40,6 @@ public void ReceiveFile(string filename, NetworkStream stream)
 }
 \end{lstlisting}
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.8\linewidth]{figs/sequence1.png}
-	\caption{Sekvensdiagram for TCP server/client - uden Send og Receive methoder}
-	\label{fig:sequence1}
-\end{figure}
-
 \subsection{Funktionalitet}
 Vores design gør det muligt for brugeren at selv indtaste en ønsket TCP servers IP-addresse. Dette giver mulighed for yderligere udvidelse af programmets funktionalitet. Der oprettes nu forbindelse til serveren med den indtastede addresse. Herefter venter clienten på at brugeren indtaster et navn på den fil der ønskes downloadet fra serveren. Clienten  anmoder da serveren om den specifikke fil, hvorefter serveren melder tilbage. Hvis filen eksisterer påbegyndes overførslen. Der er udarbejdet en sekvensdiagram der illustrer det overordnede system. Se dette på figur \ref{fig:sequence1} på side \pageref{fig:sequence1}.
 
