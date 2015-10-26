@@ -7,6 +7,13 @@ I denne øvelse i socket programmering, udarbejdes en UDP client og en UDP serve
 Der oprettes først en forbindelse mellem server og client. Derefter sender clienten en request til serveren, hvorefter denne checker om der findes en matchende kommande til clientens request.
 Såfremt serveren finder en matchende kommando, aflæses den rette server status, som derefter sendes tilbage til clienten.
 
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.8\linewidth]{figs/sequence2.png}
+	\caption{Sekvensdiagram for UDP server/client.}
+	\label{fig:sequence2}
+\end{figure}
+
 \begin{lstlisting}[caption = Hoveddesign for server,label=code:udpServer]
 private static void StartListener() 
 {
@@ -31,7 +38,7 @@ static void Main(string[] args)
 \end{lstlisting}
 
 \subsection{Funktionalitet}
-Herunder beskrives virkemåde for koden som er skrevet udfra psudokoden i vist i \ref{code:udpServer}.
+Herunder beskrives virkemåde for koden som er skrevet udfra psudokoden i vist i \ref{code:udpServer}. Yderligere kan et sekvensdiagram for UDP koden ses på figur \ref{fig:sequence2} på side \pageref{fig:sequence2}.
 
 \begin{enumerate}
 	\item Først initializeres en UDP server og en socket.
