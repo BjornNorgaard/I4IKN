@@ -6,14 +6,14 @@ using System.IO;
 
 public class UDPListener 
 {
-	private const int listenPort = 9000;
+	private const int ListenPort = 9000;
 
 	private static void StartListener() 
 	{
 		//Initiate UDP server
 		Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-		UdpClient listener = new UdpClient(listenPort);
-		IPEndPoint groupEp = new IPEndPoint(IPAddress.Any,listenPort);
+		UdpClient listener = new UdpClient(ListenPort);
+		IPEndPoint groupEp = new IPEndPoint(IPAddress.Any,ListenPort);
 		IPEndPoint responseEp;
 		string receivedCommand;
 
@@ -28,7 +28,7 @@ public class UDPListener
 				Console.WriteLine("Received command: " + receivedCommand + " from " + groupEp.Address);
 
 				//Send matching response
-				responseEp = new IPEndPoint(groupEp.Address, listenPort);
+				responseEp = new IPEndPoint(groupEp.Address, ListenPort);
 				if (receivedCommand == "U" || receivedCommand ==  "u")
 				{
 					using (StreamReader sr = new StreamReader ("/proc/uptime"))

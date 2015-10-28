@@ -200,3 +200,5 @@ FakesAssemblies/
 *.synctex.gz
 *.aux
 *.toc
+*.lot
+*.lof
