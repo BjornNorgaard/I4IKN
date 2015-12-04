@@ -28,7 +28,8 @@ a4paper, % papirtype
 \usepackage{tikz}
 \usepackage[pages=some]{background}
 \usepackage{lastpage}
-\usepackage{multicol}
+\usepackage{tocloft} % needed for dotfill in contents
+\usepackage{url}
 
 %============================================================%
 %=== Package settings========================================%
@@ -59,7 +60,7 @@ a4paper, % papirtype
 		numberstyle=\color{mygray}, 		% linjenummer farve
 		stringstyle=\color{mymauve}, 		% string farve
 		tabsize=5,
-		otherkeywords={Node, Graph, NULL, string, NetworkStream}, 	% til keywords 
+		otherkeywords={Node, Graph, NULL}, 	% til keywords 
 }
 
 % === Farver til kode =======================================%
@@ -74,13 +75,6 @@ a4paper, % papirtype
 % === Indholdsfortegnelse ===================================%
 \usepackage[english]{babel}	% bruges til at skrive ihft. på dansk
 \addto\captionsenglish{\renewcommand{\contentsname}{Indholdsfortegnelse}} % skriver inholdfortegnelse på dansk
-
-%% gør det muligt at refererer til "this"-section i tekst
-\usepackage{nameref}
-\makeatletter
-\newcommand*{\currentname}{\@currentlabelname}
-\renewcommand{\lstlistingname}{Code}
-\makeatother
 
 \addtolength{\jot}{1em} % gør rowspacing med align større
 

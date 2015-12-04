@@ -10,9 +10,9 @@ anvender socket-API til at udføre kald, i denne øvelse bruger vi kald til vore
 \section{Protokol}
 De enkelte funktioner er delt op efter en lagdelt model, som kan ses på figur~\ref{fig:layers}.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{figs/layers}
+	\includegraphics[width=\linewidth]{figs/layers}
 	\caption{}
 	\label{fig:layers}
 \end{figure}
@@ -25,9 +25,9 @@ TCP-kaldet med transportlags kald.
 Transportlaget er implementeret via stop-and-wait protokol. Protokollen anvender en 16-bit checksum.
 Se på figur~\ref{fig:segment} at laget overholder følgende segment:
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{figs/segment}
+	\includegraphics[width=\linewidth]{figs/segment}
 	\caption{}
 	\label{fig:segment}
 \end{figure}
@@ -115,7 +115,7 @@ underviser:
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=0.7\linewidth]{figs/sekvensdia}
+	\includegraphics[width=\linewidth]{figs/sekvensdia}
 	\caption{}
 	\label{fig:sekvensdia}
 \end{figure}
@@ -124,7 +124,7 @@ underviser:
 I denne øvelse skulle vi udvikle vores egen protokol med start og stop karakter ‘A’. Karakter ’A’ bliver derfor
 erstattet med ’BC’ og ’B’ er erstattes med ’BD’ som vist herunder på figur~\ref{fig:bd}.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\linewidth]{figs/bd}
 	\caption{}
@@ -182,7 +182,7 @@ public Link (int BUFSIZE)
 }
 \end{lstlisting}
 
-\subsection{Server}
+\section{Server}
 På vores server opretter vi et nyt transportlag med den ønskede bufsize når den startes. 
 Derefter kaldes fileserver med dette transportlag hvorefter der ventes på at modtage en forespørgsel på serveren. Når
 denne modtages tjekker vi om filen eksisterer, hvis denne findes sendes denne.
@@ -225,7 +225,7 @@ private file_server (Transport transport)
 }
 \end{lstlisting}
 
-\subsection{Client}
+\section{Client}
 
 På vores klient opretter vi et nyt transportlag med den ønskede bufsize når den startes. Herefter kaldes fileclient med filnavnet på fil den ønskes hentes, samt hvilket transportlag der ønsker kommunikeres over. Et svar modtages om størrelsen på filen modtages og herefter begynder clienten at modtage og gemme filen.
 
@@ -261,28 +261,28 @@ private file_client(String[] args, Transport transportStream)
 }
 \end{lstlisting}
 
-\subsection{Test}
+\section{Test}
 Serveren startes og venter på client.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{figs/test1}
+	\includegraphics[width=\linewidth]{figs/test1}
 	\caption{}
 	\label{fig:test1}
 \end{figure}
 
 Client sender hvilken fil der ønskes hentet.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{figs/test2}
+	\includegraphics[width=\linewidth]{figs/test2}
 	\caption{}
 	\label{fig:test2}
 \end{figure}
 
 Serveren modtager besked fra client og begynder at sende filen.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.7\linewidth]{figs/test3}
 	\caption{}
@@ -291,9 +291,9 @@ Serveren modtager besked fra client og begynder at sende filen.
 
 Client begynder at modtage filen fra serveren.
 
-\begin{figure}[h]
+\begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{figs/test4}
+	\includegraphics[width=0.5\linewidth]{figs/test4}
 	\caption{}
 	\label{fig:test4}
 \end{figure}
