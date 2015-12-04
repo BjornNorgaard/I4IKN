@@ -183,8 +183,8 @@ public Link (int BUFSIZE)
 \end{lstlisting}
 
 \subsection{Server}
-På vores server opretter vi et nyt transportlag med den ønskede bufsize når den startes. Derefter kaldes
-file_server() med dette transportlag hvorefter der ventes på at modtage en forespørgsel på serveren. Når
+På vores server opretter vi et nyt transportlag med den ønskede bufsize når den startes. 
+Derefter kaldes fileserver med dette transportlag hvorefter der ventes på at modtage en forespørgsel på serveren. Når
 denne modtages tjekker vi om filen eksisterer, hvis denne findes sendes denne.
 
 \begin{lstlisting}
@@ -226,10 +226,8 @@ private file_server (Transport transport)
 \end{lstlisting}
 
 \subsection{Client}
-På vores klient opretter vi et nyt transportlag med den ønskede bufsize når den startes. Herefter kaldes
-file_client() med filnavnet på fil den ønskes hentes, samt hvilket transportlag der ønsker kommunikeres
-over. En svar modtages om størrelsen på filen modtages og herefter begynder clienten at modtage og
-gemme filen.
+
+På vores klient opretter vi et nyt transportlag med den ønskede bufsize når den startes. Herefter kaldes fileclient med filnavnet på fil den ønskes hentes, samt hvilket transportlag der ønsker kommunikeres over. Et svar modtages om størrelsen på filen modtages og herefter begynder clienten at modtage og gemme filen.
 
 \begin{lstlisting}
 private file_client(String[] args, Transport transportStream)
