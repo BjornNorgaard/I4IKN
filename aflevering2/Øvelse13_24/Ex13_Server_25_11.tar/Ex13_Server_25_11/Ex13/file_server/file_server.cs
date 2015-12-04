@@ -29,7 +29,7 @@ namespace serial
 
 				long fileSize = LIB.check_File_Exists (fileToSend);
 
-				if (fileSize != 0) 
+				if (fileSize != 0)
 				{
 					transport.sendText("File found");
 
