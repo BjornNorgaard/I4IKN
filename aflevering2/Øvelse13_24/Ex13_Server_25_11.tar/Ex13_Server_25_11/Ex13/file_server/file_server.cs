@@ -125,42 +125,11 @@ namespace serial
 		/// </param>
 		public static void Main (string[] args)
 		{
-
-			Transport trans = new Transport (BUFSIZE);
-			/*
-			string myString = "abccbaabbcc";
-			Byte[] dataToSend = new byte[myString.Length * sizeof(char)];
-			System.Buffer.BlockCopy (myString.ToCharArray (), 0, dataToSend, 0, dataToSend.Length);
-*/
-			/*
-			byte[] bytesToSend = new byte[BUFSIZE];
-			bytesToSend [0] = 65;
-			bytesToSend [1] = 66;
-			bytesToSend [2] = 67;
-			bytesToSend [3] = 10;
-			bytesToSend [4] = 13;
-			for (int i = 5; i < BUFSIZE; i++) {
-				bytesToSend [i] = 66;
+			while(true)
+			{
+				Transport trans = new Transport (BUFSIZE);
+				new file_server (trans);
 			}
-
-			Console.WriteLine (bytesToSend.Length);
-			trans.send (bytesToSend,bytesToSend.Length);
-
-
-
-			string test = "hello this is a test message";
-			byte[] bytes = new byte[test.Length * sizeof(char)];
-			System.Buffer.BlockCopy (test.ToCharArray (), 0, bytes, 0, bytes.Length);
-			trans.send (bytes, bytes.Length);
-*/
-			new file_server(trans);
-			//trans.sendText ("billede.jpgHELLO THIS IS A b TEST MESSAGE");
-
-			//trans.sendText ("Test");
-
-			//Console.WriteLine(trans.readText());
-			//Console.WriteLine(trans.readText());
-
 		}
 	}
 }
